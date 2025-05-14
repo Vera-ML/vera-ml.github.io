@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Vera.ML – Developer-Native Analytics Platform</title>
+  <style>
+    :root {
+      --line-spacing: 20px;
+    }
+
+    html, body {
+      margin: 0;
+      padding: this;
+      background: transparent;     
+      overflow: auto;               
+      color: rgba(0, 0, 0, 0.8);
+      font-family: monospace;
+      line-height: 1.6;
+      scroll-behavior: smooth;      
+    }
+
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 0;                   
+      background: #f7f7f7;          
+      display: block;
+    }
+
+    .section {
+      position: relative;
+      z-index: 1;
+      min-height: 75vh;                
+      padding: 4rem 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;         
+    }
+    
+    /* Add spacing between sections */
+    #about, #team {
+      margin-top: 2rem;
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .section {
+        min-height: auto;
+        padding: 5rem 0;
+      }
+      
+      #about, #team {
+        margin-top: 3rem;
+      }
+      
+      #hero {
+        padding-top: 20rem;
+      }
+      
+      .team-members {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .content {
+      max-width: 600px;
+      padding: 2rem;
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 0.5rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    }
+
+    .team-members {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .team-member {
+      padding: 1rem;
+      background: rgba(255, 255, 255, 0.6);
+      border-radius: 0.5rem;
+      text-align: center;
+    }
+
+    .team-member h3 {
+      margin-top: 0;
+      margin-bottom: 0.5rem;
+    }
+    
+    .team-member p {
+      margin-bottom: 0.75rem;
+      font-size: 0.9rem;
+    }
+    
+    .team-member a {
+      display: inline-block;
+      margin-top: 0.5rem;
+      font-weight: bold;
+    }
+
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      z-index: 2;
+      background: rgba(255, 255, 255, 0.8);
+      padding: 0.5rem;
+      border-radius: 0.5rem;
+    }
+
+    nav a {
+      margin: 0 0.5rem;
+      color: #0645ad;
+      text-decoration: none;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    a {
+      color: #0645ad;
+      text-decoration: none;
+    }
+    
+    a:hover {
+      text-decoration: underline;
+    }
+    
+    /* Pulsing Arrow Styles */
+    .scroll-arrow {
+      display: flex;
+      justify-content: center;
+      margin-top: 2rem;
+      cursor: pointer;
+    }
+    
+    .arrow-down {
+      width: 20px;
+      height: 20px;
+      border-right: 2px solid rgba(0, 0, 0, 0.7);
+      border-bottom: 2px solid rgba(0, 0, 0, 0.7);
+      transform: rotate(45deg);
+      animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+      0% {
+        opacity: 0.3;
+        transform: rotate(45deg) scale(0.8);
+      }
+      50% {
+        opacity: 1;
+        transform: rotate(45deg) scale(1);
+      }
+      100% {
+        opacity: 0.3;
+        transform: rotate(45deg) scale(0.8);
+      }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="waveCanvas"></canvas>
+
+  <nav>
+    <a href="#hero">Home</a>
+    <a href="#about">About</a>
+    <a href="#team">Team</a>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="hero" class="section">
+    <div class="content">
+      <h1>Vera.ML</h1>
+      <p>The first developer-native analytics platform that works at the repository level to turn every code change into a business insight — automatically, in real time, and with scientific rigor.</p>
+      <div class="scroll-arrow" onclick="document.getElementById('about').scrollIntoView({behavior: 'smooth'})">
+        <div class="arrow-down"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="section">
+    <div class="content">
+      <h2>About Us</h2>
+      <p><strong>// Company Overview</strong><br>
+      Vera.ML is revolutionizing how development teams understand their code changes and impact on business outcomes. We operate at the repository level, collecting and analyzing data directly from your codebase.</p>
+      <p><strong>// Our Approach</strong><br>
+      Our platform provides real-time insights and actionable metrics that help teams make better decisions about their development process. By analyzing code patterns, commit histories, and integration with business data, Vera.ML creates a comprehensive picture of your development ecosystem that translates technical work into business value.</p>
+      <div class="scroll-arrow" onclick="document.getElementById('team').scrollIntoView({behavior: 'smooth'})">
+        <div class="arrow-down"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team Section -->
+  <section id="team" class="section">
+    <div class="content">
+      <h2>Our Team</h2>
+      <p>The passionate creators behind Vera.ML.</p>
+      
+      <div class="team-members">
+        <div class="team-member">
+          <h3>Jayram Palamadai</h3>
+          <p>Stanford-bound student with CERN experience, research at UChicago and Fermilab, USACO Platinum winner. Published at 4 conferences, won awards competing against PhD students. Perfect SAT score. Hacked a smart fridge to run Doom.</p>
+          <a href="https://www.linkedin.com/in/jayram-palamadai/" target="_blank">LinkedIn Profile</a>
+        </div>
+        <div class="team-member">
+          <h3>Dylan Brownstein</h3>
+          <p>Dylan has extensive startup experience, from seed-stage product management to 4 years at an AI and robotics venture fund. Founded a VC-backed SaaS company and co-founded a media production studio serving clients like Google and Reddit.</p>
+          <a href="https://www.linkedin.com/in/dylan-brownstein/" target="_blank">LinkedIn Profile</a>
+        </div>
+        <div class="team-member">
+          <h3>Jakub Maly</h3>
+          <p>Jakub is a technologist with a decade of experience across public and commercial sectors. My work spans from offensive security research and cyber intelligence at a government agency to building resilient systems and defensive network security at companies like Deutsche Telekom or Palantir.</p>
+          <a href="https://www.linkedin.com/in/rspwn/" target="_blank">LinkedIn Profile</a>
+        </div>
+      </div>
+      
+      <p style="margin-top: 1rem;">Contact us at <a href="mailto:info@vera.ml">jayram@vera.ml</a></p>
+    </div>
+  </section>
+
+  <script>
+    const zModifier = 1.3, rows = 60; 
+
+    
+    const canvas = document.getElementById('waveCanvas'),
+          ctx    = canvas.getContext('2d');
+
+    function resize() {
+      canvas.width  = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      const spacingY = canvas.height / rows;
+      document.documentElement.style.setProperty('--line-spacing', spacingY + 'px');
+    }
+    window.addEventListener('resize', resize);
+    window.addEventListener('load',  resize);
+
+    let mouseY = 0.5;
+    document.addEventListener('mousemove', e => {
+      mouseY = e.clientY / canvas.height;
+    });
+
+    function draw() {
+      const w = canvas.width,
+            h = canvas.height,
+            t = Date.now() * 0.001;
+
+      const scrollNorm = Math.min(window.scrollY / window.innerHeight, 1);
+
+      const control = Math.max(mouseY, scrollNorm);
+
+      const zFactor = Math.max(1 - zModifier * control, 0);
+
+      ctx.clearRect(0, 0, w, h);
+      ctx.strokeStyle = 'rgba(0,0,0,0.2)';
+      ctx.lineWidth = 1;
+
+      const cols = 80,
+            spacingX = w / cols,
+            spacingY = h / rows;
+
+      for (let y = 0; y < rows; y++) {
+        ctx.beginPath();
+        for (let x = 0; x < cols; x++) {
+          const dx = x - cols/2,
+                dy = y - rows/2,
+                dist = Math.hypot(dx, dy),
+                z    = Math.sin(dist * 0.5 - t) * 20 * zFactor,
+                px   = x * spacingX + Math.sin(t + y*0.1) * (mouseY)*10,
+                py   = y * spacingY + z;
+
+          x===0 ? ctx.moveTo(px,py) : ctx.lineTo(px,py);
+        }
+        ctx.stroke();
+      }
+
+      requestAnimationFrame(draw);
+    }
+    draw();
+  </script>
+</body>
+</html>
