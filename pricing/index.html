@@ -291,32 +291,8 @@
   }
 
   draw();
-
-    document.addEventListener('click', function(event) {
-    const target = event.target;
-    const selector = generateSelector(target);
-    window.parent.postMessage({
-      type: 'iframe-click',
-      selector,
-      href: target.href || null,
-      timestamp: Date.now()
-    }, '*');
-
-    function generateSelector(el) {
-      if (el.id) return `#${el.id}`;
-      const path = [];
-      while (el && el.nodeType === 1 && el.tagName.toLowerCase() !== "html") {
-        let sel = el.tagName.toLowerCase();
-        if (el.classList.length) sel += '.' + Array.from(el.classList).join('.');
-        const idx = Array.from(el.parentElement.children).indexOf(el) + 1;
-        sel += `:nth-child(${idx})`;
-        path.unshift(sel);
-        el = el.parentElement;
-      }
-      return path.join(" > ");
-    }
-  });
 </script>
+<script src="https://cdn.jsdelivr.net/gh/cookerturtle/vera-js-prototype/vera.js"></script>
 
 </body>
 </html>
